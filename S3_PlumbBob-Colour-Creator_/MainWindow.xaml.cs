@@ -78,8 +78,7 @@ namespace S3_PlumbBob_Colour_Creator_
                 string fileName = txtBox_fileDirectoryPath.Text;
                 string newLine = "    <kPlumbbobColorRanges value=\"" + txtBox_rgbCode.Text + "\">";
                 lineChanger(newLine, fileName, 70);
-                //Process.Start("notepad.exe", fileName);
-
+                MessageBox.Show("Added RGB codes to file!");
             }
             else
             {

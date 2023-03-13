@@ -39,7 +39,6 @@
             <TextBlock TextWrapping="Wrap" Text="4. Open moodmanager.package and right click the xml and replace with the modified moodmanager.xml"/>
             <TextBlock TextWrapping="Wrap" Text="5. Take that modified moodmanager.package(or whatever you named it) and insert it into your mods folder."/>
             <TextBlock TextWrapping="Wrap" Text=""/>
-            <TextBlock TextWrapping="Wrap" Text="Check mod's page on MTS for more specific details."/>
         </StackPanel>
 
         <!--moodmanager.xml-->
