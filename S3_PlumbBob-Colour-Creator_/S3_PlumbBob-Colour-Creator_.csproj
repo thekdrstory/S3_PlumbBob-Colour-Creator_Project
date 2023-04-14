@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\moodmanager.xml" />
     <None Remove="icon.png" />
   </ItemGroup>
 
@@ -22,6 +23,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="s3pi.Extensions">
+      <HintPath>..\..\1 - References\S3Pi\s3pi.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="s3pi.Interfaces">
+      <HintPath>..\..\1 - References\S3Pi\s3pi.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="s3pi.Package">
+      <HintPath>..\..\1 - References\S3Pi\s3pi.Package.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\moodmanager.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Resource Include="icon.png" />
   </ItemGroup>
 
