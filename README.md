@@ -6,6 +6,8 @@ A simple tool that allows you to create your own custom plumbob colours.
 By using this tool, you will be able to change the four standard plumobob colours into any other colour you wish to have
 by creating packages you can easily switch in n out at your own desire.
 
+YOU NEED .NET 6 FOR THIS TO WORK
+
 HOW TO USE:
 1. Choose your colours by clicking any button
 2. Click "generate" and you will be prompted to save a new package file.
