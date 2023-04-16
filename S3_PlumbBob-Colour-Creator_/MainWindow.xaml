@@ -32,6 +32,11 @@
             <TextBlock TextWrapping="Wrap" Text="This program allows you to make your own custom Plumbob colours." />
             <TextBlock Text="How to use this tool." FontWeight="Bold" Foreground="Yellow"/>
             <TextBlock TextWrapping="Wrap" Text="Pick your colours below, click generate, and insert the new package into your mods folder."/>
+            <TextBlock>
+                <Hyperlink NavigateUri="https://github.com/thekdrstory/S3_PlumbBob-Colour-Creator_Project" RequestNavigate="Hyperlink_RequestNavigate">
+                    Created by thekdrstory
+                </Hyperlink>
+            </TextBlock>
         </StackPanel>
 
 

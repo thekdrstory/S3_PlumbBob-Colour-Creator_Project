@@ -9,6 +9,8 @@ using s3pi.Interfaces;
 using s3pi.Package;
 using s3pi.Extensions;
 using Microsoft.Win32;
+using System.Diagnostics;
+using System.Windows.Navigation;
 
 namespace S3_PlumbBob_Colour_Creator_
 {
@@ -121,6 +123,14 @@ namespace S3_PlumbBob_Colour_Creator_
             // save the package
             NewPackage.SaveAs(newPackageFilePath);
             MessageBox.Show(confirmationMessage);
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Process p = new Process();
+            p.StartInfo.UseShellExecute = true;
+            p.StartInfo.FileName = "https://github.com/thekdrstory/S3_PlumbBob-Colour-Creator_Project";
+            p.Start();
         }
     }
 }
