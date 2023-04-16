@@ -14,7 +14,14 @@ namespace S3_PlumbBob_Colour_Creator_
 {
     public partial class MainWindow : Window
     {
-        
+        // Variables
+        string xmlPath = @"Assets\moodmanager.xml";
+        string confirmationMessage = "Package sucessfully created!";
+        string packageCreateCanceled = "No Package file created";
+        string newPackageFilePath = "";
+
+        bool packageNameEntered;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -25,7 +32,7 @@ namespace S3_PlumbBob_Colour_Creator_
         {
             Button colourButton = (Button)sender;
             ColorPickerDialog colourPicker = new ColorPickerDialog();
-            var result = colourPicker.ShowDialog();
+            bool? result = colourPicker.ShowDialog();
 
             if ( result == true )
             {
@@ -36,62 +43,33 @@ namespace S3_PlumbBob_Colour_Creator_
         // When you click the generate button, this is called...
         private void generate_rgb(object sender, RoutedEventArgs e)
         {
-            // Variables
-            string xmlPath = @"Assets\moodmanager.xml";
-            string confirmationMessage = "Package sucessfully created!";
-            string packageCreateCanceled = "No Package file created";
-            bool isPackageNameEnter = true;
-
             // Clears textbox and generates each of the 4 colour's RGB codes and formats it.
             txtBox_rgbCode.Text = "";
-            txtBox_rgbCode.Text = GenerateRgb(btn_horrible.Background.ToString()) + ", " + GenerateRgb(btn_bad.Background.ToString())
-                + ", " + GenerateRgb(btn_okay.Background.ToString()) + ", " + GenerateRgb(btn_good.Background.ToString());
+            txtBox_rgbCode.Text = GenerateRgb(btn_horrible.Background.ToString()) + ", " + GenerateRgb(btn_bad.Background.ToString()) + ", " +
+                                  GenerateRgb(btn_okay.Background.ToString()) + ", " + GenerateRgb(btn_good.Background.ToString());
 
             // Prompts user to save.
-            SaveFileDialog dialog = new SaveFileDialog();
-            dialog.Filter = "PACKAGE Files (*.package)|*.package";
-            dialog.Title = "Save Package";
-            bool? result = dialog.ShowDialog();
-            string newPackageFilePath = "";
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.Filter = "PACKAGE Files (*.package)|*.package";
+            saveDialog.Title = "Save Package";
+            bool? result = saveDialog.ShowDialog();
 
             // Opens file directory to save using user inputted name.
             if (result == true)
             {
-                newPackageFilePath = dialog.FileName;
+                newPackageFilePath = saveDialog.FileName;
+                packageNameEntered = true;
             }
             else
             {
-                isPackageNameEnter = false;
+                packageNameEntered = false;
             }
 
-            // Calls lineChanger Method below...
-            
-
-            if(isPackageNameEnter == true)
+            if(packageNameEntered == true)
             {
                 string newLine = "    <kPlumbbobColorRanges value=\"" + txtBox_rgbCode.Text + "\">";
                 lineChanger(newLine, xmlPath, 70);
-
-                // create the package
-                IPackage NewPackage = Package.NewPackage(0);
-
-                // create resource
-                TGIN tgin = new TGIN();
-                tgin.ResType = 0x0333406C;
-                tgin.ResGroup = 0x00000000;
-                tgin.ResInstance = 0x0b8655fc55e8a6a7;
-                IResourceKey rk = (TGIBlock)tgin;
-
-                // Reads the moodmanager xml and adds it to a new package file (created from the save file dialog)
-                FileStream fs = new FileStream(xmlPath, FileMode.OpenOrCreate, FileAccess.Read);
-                MemoryStream ms = new MemoryStream();
-                fs.CopyTo(ms);
-                IResourceIndexEntry irie = NewPackage.AddResource(rk, ms, true);
-                irie.Compressed = 0x5A42;
-
-                // save the package
-                NewPackage.SaveAs(newPackageFilePath);
-                MessageBox.Show(confirmationMessage);
+                CreatePackage();
             }
             else
             {
@@ -117,10 +95,32 @@ namespace S3_PlumbBob_Colour_Creator_
         static void lineChanger(string newText, string fileName, int lineNumber)
         {
             string[] fileLines = File.ReadAllLines(fileName);
-            MessageBox.Show(fileLines.Length.ToString());
             fileLines[lineNumber - 1] = newText;
             File.WriteAllLines(fileName, fileLines);
         }
-        
+
+        public void CreatePackage()
+        {
+            // create the package
+            IPackage NewPackage = Package.NewPackage(0);
+
+            // create resource
+            TGIN tgin = new TGIN();
+            tgin.ResType = 0x0333406C;
+            tgin.ResGroup = 0x00000000;
+            tgin.ResInstance = 0x0b8655fc55e8a6a7;
+            IResourceKey rk = (TGIBlock)tgin;
+
+            // Reads the moodmanager xml and adds it to a new package file (created from the save file dialog)
+            FileStream fs = new FileStream(xmlPath, FileMode.OpenOrCreate, FileAccess.Read);
+            MemoryStream ms = new MemoryStream();
+            fs.CopyTo(ms);
+            IResourceIndexEntry irie = NewPackage.AddResource(rk, ms, true);
+            irie.Compressed = 0x5A42;
+
+            // save the package
+            NewPackage.SaveAs(newPackageFilePath);
+            MessageBox.Show(confirmationMessage);
+        }
     }
 }
