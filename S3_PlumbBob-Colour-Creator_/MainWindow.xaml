@@ -9,7 +9,6 @@
         Title="Sims 3 Custom Plumbob Colour Tool" Height="300" Width="600" MinHeight="300" MinWidth="600" 
         FontFamily="arial" FontSize="11" Background="#FF222222" Foreground="#ffffff" Icon="/icon.png">
     <Grid>
-        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="*"/>
@@ -39,8 +38,6 @@
             </TextBlock>
         </StackPanel>
 
-
-
         <!--Buttons that control colours-->
         <Button x:Name="btn_horrible" Grid.Column="1" Grid.Row="2" Click="colour_picker"
                 Margin="0,5,5,5" Background="#FF0000"/>
@@ -58,6 +55,5 @@
         <!--Final Output-->
         <Button x:Name="btn_createFile" Grid.Column="1" Grid.Row="4" Content="Generate" Grid.ColumnSpan="4"
                 Background="#666666" Foreground="#ffffff" BorderBrush="White" Click="generate_rgb"/>
-
     </Grid>
 </Window>
