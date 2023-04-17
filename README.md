@@ -3,7 +3,7 @@ A simple tool that allows you to create your own custom plumbob colours.
 
 ![CPCT_v2](https://user-images.githubusercontent.com/82068638/232283319-d0c0eb16-8b67-46a1-bc2d-6f9bb1c25547.png)
 
-By using this tool, you will be able to change the four standard plumobob colours into any other colour you wish to have
+By using this tool, you will be able to change the four standard plumbob colours into any other colour you wish to have
 by creating packages you can easily switch in n out at your own desire.
 
 YOU NEED .NET 6 FOR THIS TO WORK
