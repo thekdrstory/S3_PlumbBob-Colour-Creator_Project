@@ -7,6 +7,7 @@
         xmlns:hw="http://schemas.hpod9.com/haley/wpf"
         mc:Ignorable="d"
         Title="Sims 3 Custom Plumbob Colour Tool" Height="300" Width="600" MinHeight="300" MinWidth="600" 
+        WindowStartupLocation="CenterScreen"
         FontFamily="arial" FontSize="11" Background="#FF222222" Foreground="#ffffff" Icon="/icon.png">
     <Grid>
         <Grid.ColumnDefinitions>
