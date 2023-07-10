@@ -84,7 +84,7 @@
         <!--Buttons-->
         <Button x:Name="btn_horrible"
                 Grid.Column="1"
-                Grid.Row="3"
+                Grid.Row="6"
                 Width="50"
                 Height="50"
                 Margin="2"
@@ -92,7 +92,7 @@
                 Background="#FF0000"/>
         <Button x:Name="btn_bad"
                 Grid.Column="1"
-                Grid.Row="4"
+                Grid.Row="5"
                 Width="50"
                 Height="50"
                 Margin="2"
@@ -100,7 +100,7 @@
                 Background="#FF7300"/>
         <Button x:Name="btn_okay"
                 Grid.Column="1"
-                Grid.Row="5"
+                Grid.Row="4"
                 Width="50"
                 Height="50"
                 Margin="2"
@@ -108,7 +108,7 @@
                 Background="#FFA300"/>
         <Button x:Name="btn_good"
                 Grid.Column="1"
-                Grid.Row="6"
+                Grid.Row="3"
                 Width="50"
                 Height="50"
                 Margin="2"
@@ -118,22 +118,22 @@
         <!--State Names-->
         <TextBlock Text="Horrible"
                    Grid.Column="2"
-                   Grid.Row="3"
+                   Grid.Row="6"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"/>
         <TextBlock Text="Bad"
                    Grid.Column="2"
-                   Grid.Row="4"
+                   Grid.Row="5"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"/>
         <TextBlock Text="Okay"
                    Grid.Column="2"
-                   Grid.Row="5"
+                   Grid.Row="4"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"/>
         <TextBlock Text="Good"
                    Grid.Column="2"
-                   Grid.Row="6"
+                   Grid.Row="3"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"/>
         
@@ -141,28 +141,28 @@
         <Label Content="Code"
                x:Name="lbl_horribleCode"
                Grid.Column="3"
-               Grid.Row="3"
+               Grid.Row="6"
                Foreground="#FFFFFF"
                HorizontalAlignment="Center"
                VerticalAlignment="Center"/>
         <Label Content="Code"
                x:Name="lbl_badCode"
                Grid.Column="3"
-               Grid.Row="4"
+               Grid.Row="5"
                Foreground="#FFFFFF"
                HorizontalAlignment="Center"
                VerticalAlignment="Center"/>
         <Label Content="Code"
                x:Name="lbl_okayCode"
                Grid.Column="3"
-               Grid.Row="5"
+               Grid.Row="4"
                Foreground="#FFFFFF"
                HorizontalAlignment="Center"
                VerticalAlignment="Center"/>
         <Label Content="Code"
                x:Name="lbl_goodCode"
                Grid.Column="3"
-               Grid.Row="6"
+               Grid.Row="3"
                Foreground="#FFFFFF"
                HorizontalAlignment="Center"
                VerticalAlignment="Center"/>
