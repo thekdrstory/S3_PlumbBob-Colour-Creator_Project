@@ -10,6 +10,6 @@ YOU NEED .NET 6 FOR THIS TO WORK
 
 HOW TO USE:
 1. Choose your colours by clicking any button
-2. Click "generate" and you will be prompted to save a new package file.
+2. Click "Create Package" and you will be prompted to save a new package file.
 3. Insert that package file into your mods folder.
 4. Enter your save and refresh your view.
