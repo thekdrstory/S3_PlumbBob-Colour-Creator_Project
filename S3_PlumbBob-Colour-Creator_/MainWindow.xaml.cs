@@ -18,15 +18,17 @@ namespace S3_PlumbBob_Colour_Creator_
     {
         // Variables
         string xmlPath = @"Assets\moodmanager.xml";
-        string confirmationMessage = "Package sucessfully created!";
+        string confirmationMessage = "Package successfully created!";
         string packageCreateCanceled = "No Package file created";
         string newPackageFilePath = "";
+        string rgbFormat;
 
         bool packageNameEntered;
 
         public MainWindow()
         {
             InitializeComponent();
+            ReloadRGBDisplay();
         }
 
         // This brings up Colourpicker dialog and lets you choose a colour! It assigns that colour to the button!
@@ -39,15 +41,17 @@ namespace S3_PlumbBob_Colour_Creator_
             if ( result == true )
             {
                 colourButton.Background = colourPicker.SelectedBrush;
+                ReloadRGBDisplay();
             }
         }
 
         // When you click the generate button, this is called...
         private void generate_rgb(object sender, RoutedEventArgs e)
         {
-            // Clears textbox and generates each of the 4 colour's RGB codes and formats it.
-            txtBox_rgbCode.Text = "";
-            txtBox_rgbCode.Text = GenerateRgb(btn_horrible.Background.ToString()) + ", " + GenerateRgb(btn_bad.Background.ToString()) + ", " +
+            ReloadRGBDisplay();
+
+            // Formats the codes into correct format.
+            rgbFormat = GenerateRgb(btn_horrible.Background.ToString()) + ", " + GenerateRgb(btn_bad.Background.ToString()) + ", " +
                                   GenerateRgb(btn_okay.Background.ToString()) + ", " + GenerateRgb(btn_good.Background.ToString());
 
             // Prompts user to save.
@@ -69,7 +73,7 @@ namespace S3_PlumbBob_Colour_Creator_
 
             if(packageNameEntered == true)
             {
-                string newLine = "    <kPlumbbobColorRanges value=\"" + txtBox_rgbCode.Text + "\">";
+                string newLine = "    <kPlumbbobColorRanges value=\"" + rgbFormat + "\">";
                 lineChanger(newLine, xmlPath, 70);
                 CreatePackage();
             }
@@ -91,6 +95,18 @@ namespace S3_PlumbBob_Colour_Creator_
             double sg = g / 255;
             double sb = b / 255;
             return string.Format("{0:N2}, {1:N2}, {2:N2}", sr, sg, sb);
+        }
+
+        private void ReloadRGBDisplay()
+        {
+            lbl_horribleCode.Content = "";
+            lbl_badCode.Content = "";
+            lbl_okayCode.Content = "";
+            lbl_goodCode.Content = "";
+            lbl_horribleCode.Content = GenerateRgb(btn_horrible.Background.ToString());
+            lbl_badCode.Content = GenerateRgb(btn_bad.Background.ToString());
+            lbl_okayCode.Content = GenerateRgb(btn_okay.Background.ToString());
+            lbl_goodCode.Content = GenerateRgb(btn_good.Background.ToString());
         }
 
         // This method adds the new custom colours in the moodmanager xml in the new package.
@@ -126,6 +142,14 @@ namespace S3_PlumbBob_Colour_Creator_
         }
 
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Process p = new Process();
+            p.StartInfo.UseShellExecute = true;
+            p.StartInfo.FileName = "https://modthesims.info/d/675999/custom-plumbob-color-tool.html";
+            p.Start();
+        }
+
+        private void Hyperlink_github(object sender, RequestNavigateEventArgs e)
         {
             Process p = new Process();
             p.StartInfo.UseShellExecute = true;

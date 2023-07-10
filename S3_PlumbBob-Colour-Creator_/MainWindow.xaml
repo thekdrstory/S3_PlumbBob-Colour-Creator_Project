@@ -6,55 +6,176 @@
         xmlns:local="clr-namespace:S3_PlumbBob_Colour_Creator_"
         xmlns:hw="http://schemas.hpod9.com/haley/wpf"
         mc:Ignorable="d"
-        Title="Sims 3 Custom Plumbob Colour Tool" Height="300" Width="600" MinHeight="300" MinWidth="600" 
+        Height="460"
+        Width="400"
+        FontFamily="consolas"
+        FontSize="12"
+        Background="#121212"
+        Foreground="#FFFFFF"
+        Icon="/icon.png"
         WindowStartupLocation="CenterScreen"
-        FontFamily="arial" FontSize="11" Background="#FF222222" Foreground="#ffffff" Icon="/icon.png">
-    <Grid>
+        ResizeMode="NoResize"
+        Title="Sims 3 - Custom Plumbob Colour Tool">
+    <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
-            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         
         <!--Info-->
-        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4">
-            <TextBlock TextWrapping="Wrap" Text="This program allows you to make your own custom Plumbob colours." />
-            <TextBlock Text="How to use this tool." FontWeight="Bold" Foreground="Yellow"/>
-            <TextBlock TextWrapping="Wrap" Text="Pick your colours below, click generate, and insert the new package into your mods folder."/>
+        <StackPanel Orientation="Vertical"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Grid.ColumnSpan="3">
+            <TextBlock TextWrapping="Wrap"
+                       Text="This tool allows you to edit the default plumbob colour of the four different mood states!"/>
+            <TextBlock FontWeight="Bold"
+                       Foreground="Yellow"
+                       Text="HOW TO USE:"/>
+            <TextBlock TextWrapping="Wrap"
+                       Text="Pick your colours below, click Create Package, and save it to your mods folder."/>
+            <TextBlock TextWrapping="Wrap"
+                       Text="(The new colours may not appear as soon as you load in so play a bit or switch active sim!)"/>
             <TextBlock>
-                <Hyperlink NavigateUri="https://github.com/thekdrstory/S3_PlumbBob-Colour-Creator_Project" RequestNavigate="Hyperlink_RequestNavigate">
-                    Created by thekdrstory
+                <Hyperlink NavigateUri="https://modthesims.info/d/675999/custom-plumbob-color-tool.html"
+                           RequestNavigate="Hyperlink_RequestNavigate">
+                    Created by CrossTheMersey for MTS
+                </Hyperlink>
+            </TextBlock>
+
+            <TextBlock>
+                <Hyperlink NavigateUri="https://github.com/thekdrstory/S3_PlumbBob-Colour-Creator_Project" 
+                           RequestNavigate="Hyperlink_github">
+                    Source code on my Github
                 </Hyperlink>
             </TextBlock>
         </StackPanel>
 
-        <!--Buttons that control colours-->
-        <Button x:Name="btn_horrible" Grid.Column="1" Grid.Row="2" Click="colour_picker"
-                Margin="0,5,5,5" Background="#FF0000"/>
-        <Button x:Name="btn_bad" Grid.Column="2" Grid.Row="2" Click="colour_picker"
-                Margin="0,5,5,5" Background="#FF7300"/>
-        <Button x:Name="btn_okay" Grid.Column="3" Grid.Row="2" Click="colour_picker"
-                Margin="0,5,5,5" Background="#FFA300"/>
-        <Button x:Name="btn_good" Grid.Column="4" Grid.Row="2" Click="colour_picker"
-                Margin="0,5,0,5" Background="#00FF00"/>
+        <!--Main Content Section-->
 
-        <!--RGB Codes-->
-        <TextBox x:Name="txtBox_rgbCode" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="4" Margin="0,0,0,5"
-                 Background="#666666" Foreground="#ffffff" BorderBrush="White"/>
+        <!--Header Names-->
+        <TextBlock Grid.Column="1"
+                   Grid.Row="2"
+                   Text="COLOUR"
+                   HorizontalAlignment="Center"/>
+        <TextBlock Grid.Column="2"
+                   Grid.Row="2"
+                   Text="STATE"
+                   HorizontalAlignment="Center"/>
+        <TextBlock Grid.Column="3"
+                   Grid.Row="2"
+                   Text="CODES (RGB)"
+                   HorizontalAlignment="Center"/>
+
+        <!--Buttons-->
+        <Button x:Name="btn_horrible"
+                Grid.Column="1"
+                Grid.Row="3"
+                Width="50"
+                Height="50"
+                Margin="2"
+                Click="colour_picker"
+                Background="#FF0000"/>
+        <Button x:Name="btn_bad"
+                Grid.Column="1"
+                Grid.Row="4"
+                Width="50"
+                Height="50"
+                Margin="2"
+                Click="colour_picker"
+                Background="#FF7300"/>
+        <Button x:Name="btn_okay"
+                Grid.Column="1"
+                Grid.Row="5"
+                Width="50"
+                Height="50"
+                Margin="2"
+                Click="colour_picker"
+                Background="#FFA300"/>
+        <Button x:Name="btn_good"
+                Grid.Column="1"
+                Grid.Row="6"
+                Width="50"
+                Height="50"
+                Margin="2"
+                Click="colour_picker"
+                Background="#00FF00"/>
+        
+        <!--State Names-->
+        <TextBlock Text="Horrible"
+                   Grid.Column="2"
+                   Grid.Row="3"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"/>
+        <TextBlock Text="Bad"
+                   Grid.Column="2"
+                   Grid.Row="4"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"/>
+        <TextBlock Text="Okay"
+                   Grid.Column="2"
+                   Grid.Row="5"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"/>
+        <TextBlock Text="Good"
+                   Grid.Column="2"
+                   Grid.Row="6"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"/>
+        
+        <!--RGB Codes Display-->
+        <Label Content="Code"
+               x:Name="lbl_horribleCode"
+               Grid.Column="3"
+               Grid.Row="3"
+               Foreground="#FFFFFF"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"/>
+        <Label Content="Code"
+               x:Name="lbl_badCode"
+               Grid.Column="3"
+               Grid.Row="4"
+               Foreground="#FFFFFF"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"/>
+        <Label Content="Code"
+               x:Name="lbl_okayCode"
+               Grid.Column="3"
+               Grid.Row="5"
+               Foreground="#FFFFFF"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"/>
+        <Label Content="Code"
+               x:Name="lbl_goodCode"
+               Grid.Column="3"
+               Grid.Row="6"
+               Foreground="#FFFFFF"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"/>
 
         <!--Final Output-->
-        <Button x:Name="btn_createFile" Grid.Column="1" Grid.Row="4" Content="Generate" Grid.ColumnSpan="4"
-                Background="#666666" Foreground="#ffffff" BorderBrush="White" Click="generate_rgb"/>
+        <Button x:Name="btn_createFile"
+                Grid.Column="1"
+                Grid.Row="7"
+                Content="Create Package"
+                Grid.ColumnSpan="3"
+                Background="#666666"
+                Foreground="#ffffff"
+                BorderBrush="White"
+                Click="generate_rgb"/>
     </Grid>
 </Window>
